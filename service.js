@@ -3,8 +3,8 @@ const https = require('https');
 
 exports.sampleRequest = function (req, res) {
     const reqUrl = url.parse(req.url, true);
-    var owner = 'avrillianz';
-    var repository = 'Intention';
+    var owner = 'avrillianz'; // default owner
+    var repository = 'Intention'; // default repository
 
     if (reqUrl.query.owner) {
         owner = reqUrl.query.owner
@@ -23,7 +23,7 @@ exports.sampleRequest = function (req, res) {
         }
     }
 
-    var request = https.get(options, (resp) => {
+    https.get(options, (resp) => {
         let data = '';
 
         resp.on('data', (chunk) => {
